@@ -5,8 +5,8 @@ const PersonSchema = new Mongoose.Schema(
     firstName: { type: String },
     lastName: { type: String },
     dateOfBirth: { type: Date },
-    dateOfBirth: { type: Date },
-    image: { type: String },
+    dateOfDeath: { type: Date },
+    photo: { type: String },
   },
   { timestamps: true, versionKey: false }
 );
