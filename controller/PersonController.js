@@ -44,6 +44,16 @@ class PersonController {
       next(new ApiError(error?.message));
     }
   }
+
+  async findById(req, res, next) {
+    const { id } = req.params;
+    try {
+      const response = await personService.findOne({ _id: id });
+      res.status(httpStatus.OK).json(response);
+    } catch (error) {
+      next(new ApiError(error?.message));
+    }
+  }
 }
 
 module.exports = new PersonController();
