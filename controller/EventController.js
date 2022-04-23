@@ -38,10 +38,30 @@ class EventController {
     try {
       const person = await eventService.findOne({ _id: id });
       if (!person) throw new ApiError("Kişi bulunamadı!", httpStatus.NOT_FOUND);
-      const response = await personService.delete(id, req.body);
+      const response = await eventService.delete(id, req.body);
       res.status(httpStatus.OK).json(response);
     } catch (error) {
       next(new ApiError(error?.message));
+    }
+  }
+
+  async FindAllEventsByPersonId(req, res, next) {
+    const { personId } = req.params;
+    try {
+      const response = await eventService.list({ person: personId });
+      res.status(httpStatus.OK).json(response);
+    } catch (error) {
+      next(new ApiError(error.message));
+    }
+  }
+
+  async FindOneEventById(req, res, next) {
+    const { id } = req.params;
+    try {
+      const response = await eventService.findOne({ _id: id });
+      res.status(httpStatus.OK).json(response);
+    } catch (e) {
+      next(new ApiError(e.message));
     }
   }
 }
