@@ -4,6 +4,7 @@ const PersonSchema = new Mongoose.Schema(
   {
     firstName: { type: String },
     lastName: { type: String },
+    description: { type: String },
     dateOfBirth: { type: Date },
     dateOfDeath: { type: Date },
     photo: { type: String },
