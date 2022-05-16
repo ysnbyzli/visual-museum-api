@@ -5,7 +5,12 @@ const cors = require("cors");
 const path = require("path");
 const config = require("./config");
 const loaders = require("./loaders");
-const { PersonRoutes, EventRoutes, CategoryRoutes } = require("./routes");
+const {
+  PersonRoutes,
+  EventRoutes,
+  CategoryRoutes,
+  TagRoutes,
+} = require("./routes");
 const errorHandler = require("./middlewares/errorHandler");
 
 config();
@@ -25,6 +30,7 @@ app.listen(process.env.APP_PORT, () => {
   app.use("/persons", PersonRoutes);
   app.use("/events", EventRoutes);
   app.use("/categories", CategoryRoutes);
+  app.use("/tags", TagRoutes);
 
   app.use((req, res, next) => {
     const error = new Error("Aradağınız sayfa bulunmamaktadır!");
