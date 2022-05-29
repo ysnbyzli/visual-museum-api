@@ -8,6 +8,11 @@ const PersonSchema = new Mongoose.Schema(
     dateOfBirth: { type: Date },
     dateOfDeath: { type: Date },
     photo: { type: String },
+    category: {
+      type: Mongoose.Types.ObjectId,
+      ref: "categories",
+    },
+    tags: [{ type: Mongoose.Types.ObjectId, ref: "tags" }],
   },
   { timestamps: true, versionKey: false }
 );

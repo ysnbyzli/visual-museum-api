@@ -6,7 +6,7 @@ const EventSchema = Mongoose.Schema({
   startDate: { type: Date },
   endDate: { type: Date },
   photos: [{ type: String }],
-  tags: [{ type: String }],
+  tags: [{ type: Mongoose.Types.ObjectId, ref: "tags" }],
   person: {
     type: Mongoose.Types.ObjectId,
     ref: "persons",
