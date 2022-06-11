@@ -2,11 +2,11 @@
   "name": "lowest-price-api",
   "version": "1.0.0",
   "description": "backend project for lowest price api",
-  "main": "app.js",
+  "main": "index.js",
   "author": "Yasin Beyazlı <yasinbeyazli29@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "node app.js"
+    "start": "node index.js"
   },
   "dependencies": {
     "cors": "^2.8.5",
