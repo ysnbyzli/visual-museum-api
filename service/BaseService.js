@@ -26,6 +26,10 @@ class BaseService {
   delete(id) {
     return this.BaseModel.findByIdAndDelete(id);
   }
+
+  getCount() {
+    return this.BaseModel.count();
+  }
 }
 
 module.exports = BaseService;

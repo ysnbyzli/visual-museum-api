@@ -10,6 +10,7 @@ const {
   EventRoutes,
   CategoryRoutes,
   TagRoutes,
+  StaticRoutes,
 } = require("./routes");
 const errorHandler = require("./middlewares/errorHandler");
 
@@ -32,6 +33,7 @@ app.listen(process.env.APP_PORT, () => {
   app.use("/events", EventRoutes);
   app.use("/categories", CategoryRoutes);
   app.use("/tags", TagRoutes);
+  app.use("/statics", StaticRoutes);
 
   app.use((req, res, next) => {
     const error = new Error("Aradağınız sayfa bulunmamaktadır!");

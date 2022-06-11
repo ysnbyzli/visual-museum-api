@@ -8,9 +8,10 @@ class PersonService extends BaseService {
 
   list(where) {
     return this.BaseModel.find(where || {})
+      .sort({ createdAt: -1 })
       .populate({
         path: "category",
-        select: "title",
+        select: "title _id",
       })
       .populate({
         path: "tags",
