@@ -26,12 +26,12 @@ app.use(express.json({ limit: "50mb" }));
 app.use(helmet());
 app.use(fileUpload());
 
-app.get("/", (req, res) => {
-  res.send("Welcome to my project");
-});
-
 app.listen(process.env.APP_PORT, () => {
   console.log("sunucu ayağa kalktı 🚀");
+
+  app.get("/", (req, res) => {
+    res.send("Welcome to my project 🤓");
+  });
 
   app.use("/persons", PersonRoutes);
   app.use("/events", EventRoutes);
