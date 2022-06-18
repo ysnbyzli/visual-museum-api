@@ -12,6 +12,15 @@ class EventService extends BaseService {
       select: "title color",
     });
   }
+
+  listByLimit(where, limit) {
+    return this.BaseModel.find(where || {})
+      .limit(limit)
+      .populate({
+        path: "tags",
+        select: "title color",
+      });
+  }
 }
 
 module.exports = new EventService();

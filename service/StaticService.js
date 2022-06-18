@@ -17,6 +17,10 @@ class StaticService {
       category,
     };
   }
+
+  getCategoriesCount() {
+    return personService.groupByCategoriesCount();
+  }
 }
 
 module.exports = new StaticService();

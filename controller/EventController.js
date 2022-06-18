@@ -4,8 +4,14 @@ const ApiError = require("../errors/ApiError");
 
 class EventController {
   async index(req, res, next) {
+    const { limit } = req.query;
     try {
-      const response = await eventService.list();
+      let response;
+      if (!limit) {
+        response = await eventService.list();
+      } else {
+        response = await eventService.listByLimit(null, limit);
+      }
       res.status(httpStatus.OK).json(response);
     } catch (error) {
       next(new ApiError(error?.message));

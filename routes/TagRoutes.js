@@ -10,6 +10,4 @@ router.route("/").post(TagController.create);
 router.route("/:id").delete(TagController.delete);
 router.route("/:id").patch(TagController.update);
 
-router.get("/", TagController.index);
-
 module.exports = router;

@@ -4,8 +4,23 @@ const personService = require("../service/PersonService");
 
 class PersonController {
   async index(req, res, next) {
+    const { limit } = req.query;
     try {
-      const response = await personService.list();
+      let response;
+      if (!limit) {
+        response = await personService.list();
+      } else {
+        response = await personService.listByLimit(null, parseInt(limit));
+      }
+      res.status(httpStatus.OK).json(response);
+    } catch (error) {
+      next(new ApiError(error?.message));
+    }
+  }
+
+  async indexByLimit(req, res, next) {
+    try {
+      const response = await personService.listByLimit();
       res.status(httpStatus.OK).json(response);
     } catch (error) {
       next(new ApiError(error?.message));
