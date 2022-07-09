@@ -19,6 +19,20 @@ class PersonService extends BaseService {
       });
   }
 
+  listTopViewingPerson() {
+    return Person.find({})
+      .sort({ viewing: -1 })
+      .limit(5)
+      .populate({
+        path: "category",
+        select: "title _id",
+      })
+      .populate({
+        path: "tags",
+        select: "title color",
+      });
+  }
+
   findOne(where) {
     return this.BaseModel.findOne(where)
       .populate({
@@ -43,6 +57,10 @@ class PersonService extends BaseService {
         path: "tags",
         select: "title color",
       });
+  }
+
+  updateViewing(where) {
+    return this.BaseModel.updateOne(where, { $inc: { viewing: 1 } });
   }
 
   async groupByCategoriesCount() {

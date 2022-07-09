@@ -8,6 +8,7 @@ const PersonSchema = new Mongoose.Schema(
     dateOfBirth: { type: Date },
     dateOfDeath: { type: Date },
     photo: { type: String },
+    viewing: { type: Number, default: 0 },
     category: {
       type: Mongoose.Types.ObjectId,
       ref: "categories",

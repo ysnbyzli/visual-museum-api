@@ -6,7 +6,6 @@ class StaticController {
   async getPersonsByCategoriesCount(req, res, next) {
     try {
       const response = await staticService.getCategoriesCount();
-      console.log(response);
       res.status(httpStatus.OK).json(response);
     } catch (error) {
       next(new ApiError(error?.message));

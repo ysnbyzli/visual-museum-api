@@ -63,7 +63,17 @@ class PersonController {
   async findById(req, res, next) {
     const { id } = req.params;
     try {
+      await personService.updateViewing({ _id: id });
       const response = await personService.findOne({ _id: id });
+      res.status(httpStatus.OK).json(response);
+    } catch (error) {
+      next(new ApiError(error?.message));
+    }
+  }
+
+  async indexTopViewing(req, res, next) {
+    try {
+      const response = await personService.listTopViewingPerson();
       res.status(httpStatus.OK).json(response);
     } catch (error) {
       next(new ApiError(error?.message));

@@ -7,15 +7,18 @@ class EventService extends BaseService {
   }
 
   list(where) {
-    return this.BaseModel.find(where || {}).populate({
-      path: "tags",
-      select: "title color",
-    });
+    return this.BaseModel.find(where || {})
+      .sort({ startDate: 1 })
+      .populate({
+        path: "tags",
+        select: "title color",
+      });
   }
 
   listByLimit(where, limit) {
     return this.BaseModel.find(where || {})
       .limit(limit)
+      .sort({ createdAt: -1 })
       .populate({
         path: "tags",
         select: "title color",
